@@ -1,0 +1,4 @@
+* Payroll UML diagram, version 1
+[[./payroll.png][Click here to check the UML diagram!]]
+
+
