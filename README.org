@@ -1,6 +1,9 @@
-* Payroll UML diagram, First Version
-[[./payroll.png][Click here to check the UML diagram!]]
+* Payroll UML diagram
 
-
-* Payroll - Interface Version (Reviwed)
+** Latest version
+Corrected relations, main and included *Interface*
 [[./bkp.png]]
+
+** Older versions
+Nice to check the progress-evolution
+[[./payroll.png][Click here to check the First Version!]]
