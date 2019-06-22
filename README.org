@@ -2,8 +2,8 @@
 
 ** Latest version
 Corrected relations, main and included *Interface*
-[[./bkp2.png]]
+[[./uml/payroll-2.1.png]]
 
 ** Older versions
-Nice to check the progress-evolution
-[[./payroll.png][Click here to check the First Version!]]
+Check the progress-evolution
+[[./payroll-1.0.png][Click here to check the First Version!]]
