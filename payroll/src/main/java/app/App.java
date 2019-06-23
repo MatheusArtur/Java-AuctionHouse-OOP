@@ -1,4 +1,4 @@
-package com.projetodesoftware.app;
+package app;
 
 /**
  * Hello world!
