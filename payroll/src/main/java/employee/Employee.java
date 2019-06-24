@@ -13,13 +13,13 @@ public class Employee implements EmployeeUtils
     protected Syndie infoSyndie;
     protected Payment infoPayment;
     
-    void addEmployee(String[] name, String[] adress, String[] type, char syndire, String[] payment)
+    void addEmployee(String[] name, String[] adress, String[] type, char syndie, String[] payment)
     {
 	//TODO
     }
 
     
-    void addEmployee(int id, String[] name, String[] adress, String[] type, char syndire, String[] payment)
+    void addEmployee(int id, String[] name, String[] adress, String[] type, char syndie, String[] payment)
     {
 	//TODO
     }
