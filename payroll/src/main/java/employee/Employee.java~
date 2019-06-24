@@ -1,0 +1,22 @@
+package employee;
+
+public class Employee implements EmployeeUtils
+{
+    private int employeeID;
+    private String employeeName;
+    private String employeeAdress;
+    protected TODO typo;
+    protected TODO syndie;
+    protected TODO payment;
+    
+    void addEmployee(String[] name, String[] adress, String[] type, char syndire, String[] payment)
+    {
+	
+    }
+
+    
+    void addEmployee(int id, String[] name, String[] adress, String[] type, char syndire, String[] payment)
+    {
+	
+    }
+}
