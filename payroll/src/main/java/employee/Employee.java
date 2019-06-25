@@ -3,7 +3,6 @@ import employee.syndie.*;
 import employee.payment.*;
 import employee.pcard.*;
 import employee.types.*;
-import employee.types.Salaried;
 import agenda;
 
 public abstract class Employee implements EmployeeUtils
@@ -17,7 +16,7 @@ public abstract class Employee implements EmployeeUtils
     
     public void addEmployee(String[] name, String[] adress, String[] type, char syndie, String[] payment)
     {
-	this.infoSalaried = Salaried.addEmployee(name, adress, type, syndie, payment, 2.2);
+	//TODO
     }
 
     public void addEmployee(int id, String[] name, String[] adress, String[] type, char syndie, String[] payment)
