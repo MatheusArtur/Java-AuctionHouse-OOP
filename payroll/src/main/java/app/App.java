@@ -62,7 +62,7 @@ public class App
     public static void main(String[] args)
     {
     	agendaList.add(new Agenda(1, "Monthly", 0, 0));
-	employeeList.add(new Employee("Jane Doe", "Shonan Av. 1994", "Salaried", 'y', "Mail"));
+	employeeList.add(new Employee(0, "Jane Doe", "Shonan Av. 1994", "Salaried", 'y', "Mail"));
     }
 
 }

@@ -14,12 +14,12 @@ public class Employee implements EmployeeUtils
     protected Payment infoPayment; 
     protected Agenda infoAgenda;
 
-    public Employee(String name, String adress, String type, char syndie, String payment)
+    public Employee(int id, String name, String adress, String type, char syndie, String payment)
     {
 
     }
 
-    public void manageEmployee(String name, String adress, String type, char syndie, String payment)
+    public void manageEmployee(int id, String name, String adress, String type, char syndie, String payment)
     {
 	
     }

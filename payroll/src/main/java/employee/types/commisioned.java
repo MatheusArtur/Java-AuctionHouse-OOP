@@ -6,9 +6,9 @@ class Commisioned extends Salaried
     protected double salesPercentage;
     
 
-    public Commisioned(String name, String adress, String type, char syndie, String payment, double income, double cut, double revenue)
+    public Commisioned(int id, String name, String adress, String type, char syndie, String payment, double income, double cut, double revenue)
     {
-	super(name, adress, type, syndie, payment, income);
+	super(id, name, adress, type, syndie, payment, income);
 	this.salesRevenue = revenue;
 	this.salesPercentage = cut;
 		

@@ -5,9 +5,9 @@ class Salaried extends Employee
 {
     protected double bruteIncome;
 
-    public Salaried(String name, String adress, String type, char syndie, String payment, double income)
+    public Salaried(int id, String name, String adress, String type, char syndie, String payment, double income)
     {
-	super(name, adress, type, syndie, payment);
+	super(id, name, adress, type, syndie, payment);
 	this.bruteIncome = income;
     }
 

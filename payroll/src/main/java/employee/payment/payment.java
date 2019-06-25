@@ -9,6 +9,12 @@ public class Payment
     protected int agencyNumber;
     protected int accountNumber;
 
+    Payment(int agcn, int accn)
+    {
+	this.accountNumber = accn;
+	this.agencyNumber = agcn;
+    }
+    
     public void setBankAccount(int agcn, int accn)
     {
 	this.accountNumber = accn;
