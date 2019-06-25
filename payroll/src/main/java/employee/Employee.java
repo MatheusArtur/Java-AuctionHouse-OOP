@@ -3,7 +3,7 @@ import employee.syndie.*;
 import employee.payment.*;
 import employee.pcard.*;
 import employee.types.*;
-import agenda;
+import agenda.*;
 
 public abstract class Employee implements EmployeeUtils
 {
@@ -19,7 +19,7 @@ public abstract class Employee implements EmployeeUtils
 	//TODO
     }
 
-    public void addEmployee(int id, String[] name, String[] adress, String[] type, char syndie, String[] payment)
+    public void editEmployee(int id, String[] name, String[] adress, String[] type, char syndie, String[] payment)
     {
 	//TODO
     }
