@@ -3,23 +3,24 @@ import employee.syndie.*;
 import employee.payment.*;
 import employee.pcard.*;
 import employee.types.*;
+import employee.types.Salaried;
+import agenda;
 
-public class Employee implements EmployeeUtils
+public abstract class Employee implements EmployeeUtils
 {
     private int employeeID;
     private String employeeName;
     private String employeeAdress;
-    protected  TODO typo;
     protected Syndie infoSyndie;
     protected Payment infoPayment;
+    protected Agenda infoAgenda;
     
-    void addEmployee(String[] name, String[] adress, String[] type, char syndie, String[] payment)
+    public void addEmployee(String[] name, String[] adress, String[] type, char syndie, String[] payment)
     {
-	//TODO
+	this.infoSalaried = Salaried.addEmployee(name, adress, type, syndie, payment, 2.2);
     }
 
-    
-    void addEmployee(int id, String[] name, String[] adress, String[] type, char syndie, String[] payment)
+    public void addEmployee(int id, String[] name, String[] adress, String[] type, char syndie, String[] payment)
     {
 	//TODO
     }

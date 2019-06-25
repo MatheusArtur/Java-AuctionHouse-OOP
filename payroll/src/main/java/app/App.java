@@ -1,6 +1,7 @@
 package app;
 import java.util.ArrayList;
-import employee.*
+import employee.*;
+import employee.types.Hourly;
 import datn.*;
 /**
  * Hello world!
@@ -8,11 +9,6 @@ import datn.*;
  */
 public class App 
 {
-    public ArrayList<String> cars;
+    private ArrayList<Employee> employeeList;
     
-    public static void main( String[] args )
-    {
-	System.out.println( "Hello World!" );
-	datn.Datn.testing();
-    }
 }
