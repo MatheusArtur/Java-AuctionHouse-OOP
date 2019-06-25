@@ -1,10 +1,17 @@
 package employee.types;
+import employee.*;
 
-public class Salaried extends Employee
+class Salaried extends Employee
 {
     protected double bruteIncome;
 
-    public void setIncome(double value)
+    public Salaried(String name, String adress, String type, char syndie, String payment, double income)
+    {
+	super(name, adress, type, syndie, payment);
+	this.bruteIncome = income;
+    }
+
+	public void setIncome(double value)
     {
 	this.bruteIncome = value;
     }

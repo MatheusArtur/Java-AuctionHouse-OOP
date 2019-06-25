@@ -1,10 +1,19 @@
 package employee.types;
 
-public class Commisioned extends Salaried
+class Commisioned extends Salaried
 {
     protected double salesRevenue;
     protected double salesPercentage;
+    
 
+    public Commisioned(String name, String adress, String type, char syndie, String payment, double income, double cut, double revenue)
+    {
+	super(name, adress, type, syndie, payment, income);
+	this.salesRevenue = revenue;
+	this.salesPercentage = cut;
+		
+    }
+	
     public void setPercentage(double value)
     {
 	this.salesPercentage = value;
@@ -12,7 +21,7 @@ public class Commisioned extends Salaried
 
     public void setRevenue(double value)
     {
-	this.salesPercentage += value;
+	this.salesRevenue += value;
     }
 
     public double getPercentage()

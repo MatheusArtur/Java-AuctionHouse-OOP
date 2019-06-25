@@ -5,22 +5,22 @@ import employee.pcard.*;
 import employee.types.*;
 import agenda.*;
 
-public abstract class Employee implements EmployeeUtils
+public class Employee implements EmployeeUtils
 {
     private int employeeID;
     private String employeeName;
     private String employeeAdress;
     protected Syndie infoSyndie;
-    protected Payment infoPayment;
+    protected Payment infoPayment; 
     protected Agenda infoAgenda;
-    
-    public void addEmployee(String[] name, String[] adress, String[] type, char syndie, String[] payment)
+
+    public Employee(String name, String adress, String type, char syndie, String payment)
     {
-	//TODO
+
     }
 
-    public void editEmployee(int id, String[] name, String[] adress, String[] type, char syndie, String[] payment)
+    public void manageEmployee(String name, String adress, String type, char syndie, String payment)
     {
-	//TODO
+	
     }
 }

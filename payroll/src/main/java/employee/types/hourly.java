@@ -1,12 +1,20 @@
 package employee.types;
+import employee.*;
 
-public class Hourly extends Employee
+class Hourly extends Employee
 {
     protected double weeklyHours;
 
+
+    public Hourly(String name, String adress, String type, char syndie, String payment, double hours)
+    {
+	super(name, adress, type, syndie, payment);
+	this.weeklyHours = hours;
+    }
+
     public void setHours(double value)
     {
-	this.salesPercentage += value;
+	this.weeklyHours += value;
     }
 
     public double getHours()
