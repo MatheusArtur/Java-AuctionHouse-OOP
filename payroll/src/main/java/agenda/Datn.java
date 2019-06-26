@@ -2,7 +2,7 @@ package agenda;
 import java.util.Calendar;
 import java.util.Scanner;
 
-public class Agenda
+public class Datn
 {
     private static int day;
     private static int month;

@@ -1,25 +1,27 @@
-package employee.syndie;
+package employee;
 
 public class Syndie
 {
     protected double monthlyTax;
     protected double serviceTax;
 
-    public void setSubscription(double value)
+    Syndie(int tax, int service)
     {
-	this.monthlyTax = value;
+	this.monthlyTax = tax;
+	this.serviceTax = service;
     }
-    
-    public void setLeech(double value)
+
+    public void manageSyndie(int tax, int service)
     {
-	this.serviceTax = value;
+	this.monthlyTax = tax;
+	this.serviceTax = service;
     }
 
     public double getSubscription(double value)
     {
 	return (this.monthlyTax);
     }
-    
+
     public double getLeech(double value)
     {
 	return (this.serviceTax);
