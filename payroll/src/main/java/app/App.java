@@ -74,9 +74,9 @@ public class App
     public static void launchPointCard(int idAux)
     {
 	double init, end, tot;
-	System.out.println("Input starting hour");
+	System.out.println("Input starting hour:");
 	init = input.nextDouble();
-	System.out.println("Input ending hour");
+	System.out.println("Input ending hour:");
 	end = input.nextDouble();
 	
 	tot = end - init;
@@ -86,7 +86,7 @@ public class App
     // fun4
     public static void launchSaleRevenue(int idAux)
     {
-	System.out.println("Add sale pricing");
+	System.out.println("Add sale pricing:");
 	double pricing;
 	pricing = input.nextDouble();
 	((Commisioned)employeeList.get(idAux)).setSalesRevenue(pricing);
@@ -97,7 +97,7 @@ public class App
     public static void launchServiceCost(int idAux)
     {
 	double pricing;
-	System.out.println("Add Union service");
+	System.out.println("Add Union service fee:");
 	pricing = input.nextDouble();
 
 	employeeList.get(idAux).setService(pricing);
@@ -217,6 +217,13 @@ public class App
 	System.out.printf("The created Agenda is the number %d; you can now assign existing employees to it%n", plan);
     }
 
+    public static void assignAgenda(int idAux)
+    {
+	int newAgendaIndex;
+	System.out.println("Please input the new Agenda index you wish to assign to the employee");
+	newAgendaIndex = input.nextInt();
+	employeeList.get(idAux).setInfoAgenda(agendaList.get(newAgendaIndex));
+    }
 
     public static void main(String[] args)
     {
@@ -231,7 +238,7 @@ public class App
 	    {
 		idAux = 9999;
 		System.out.println("Wecolme to the Payroll System, please select your operation:");
-		System.out.printf("1- Add Employee%n2- Remove Employee%n3- Lauch PointCard%n4- Add a sale Revenue%n5- Add a Union service cost%n6- Edit a employee%n7- Create a new Payroll agenda%n");
+		System.out.printf("1- Add Employee%n2- Remove Employee%n3- Lauch PointCard%n4- Add a sale Revenue%n5- Add a Union service cost%n6- Edit an employee%n7- Create a new Payroll agenda%n8- Edit an created employee Agenda%n");
 		operation = input.nextInt();
 	
 		if (operation == 1) {
@@ -264,6 +271,11 @@ public class App
 		}
 		else if (operation == 7) {
 		    newAgenda();
+		}
+		else if (operation == 8) {
+		    System.out.println("Input Employee ID:");
+		    idAux = input.nextInt();
+		    assignAgenda(idAux);
 		}
 	    }
     }
