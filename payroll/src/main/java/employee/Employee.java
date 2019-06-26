@@ -19,7 +19,7 @@ public class Employee implements EmployeeUtils
     
     public Employee(int id, String name, String adress, String type, String syndie, String payment, Agenda payday)
     {
-	int unionFee, unionService, employeeAccount, employeeAgency, employeeZip;
+	int unionFee, employeeAccount, employeeAgency, employeeZip;
 	    
 	this.employeeID = id;
 	this.employeeName = name;
@@ -30,9 +30,7 @@ public class Employee implements EmployeeUtils
 	if (syndie == "y") {
 	    System.out.println("Input Union Monthly fee:");
 	    unionFee = input.nextInt();
-	    System.out.println("Input Union Service fee:");
-	    unionService = input.nextInt();
-	    this.infoSyndie.manageSyndie(unionFee, unionService);
+	    this.infoSyndie.manageSyndie(unionFee, 0);
 	}
 	else
 	    {
@@ -74,6 +72,11 @@ public class Employee implements EmployeeUtils
 		    employeeZip = input.nextInt();
 		    infoPayment.managePayment(employeeAgency, employeeAccount, employeeZip, payment);		    
 		}
+    }
+
+    public void setService(double price)
+    {
+	this.infoSyndie.setServiceTax(price);
     }
 
 	public int getEmployeeID() {

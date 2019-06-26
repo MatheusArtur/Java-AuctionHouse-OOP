@@ -17,13 +17,21 @@ public class Syndie
 	this.serviceTax = service;
     }
 
-    public double getSubscription(double value)
-    {
-	return (this.monthlyTax);
-    }
+	public double getMonthlyTax() {
+		return monthlyTax;
+	}
 
-    public double getLeech(double value)
-    {
-	return (this.serviceTax);
-    }
+	public void setMonthlyTax(double monthlyTax) {
+		this.monthlyTax = monthlyTax;
+	}
+
+	public double getServiceTax() {
+		return serviceTax;
+	}
+
+	public void setServiceTax(double serviceTax) {
+		this.serviceTax += serviceTax;
+	}
+
+
 }

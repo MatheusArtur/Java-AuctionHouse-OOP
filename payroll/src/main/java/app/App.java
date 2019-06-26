@@ -81,14 +81,22 @@ public class App
 	((Hourly)employeeList.get(idAux)).setHours(tot);;
     }
     // fun4
-    public void launchSaleRevenue()
+    public void launchSaleRevenue(int idAux)
     {
+	System.out.println("Add sale pricing");
+	double pricing;
+	pricing = input.nextDouble();
+	((Commisioned)employeeList.get(idAux)).setSalesRevenue(pricing);
+
 	
     }
     // fun5
-    public void launchServiceCost()
+    public void launchServiceCost(int idAux)
     {
-	
+	System.out.println("Add Union service");
+	double pricing;
+	pricing = input.nextDouble();
+	employeeList.get(idAux).setService(pricing);
     }
     // fun6
     public static void newEditEmployee(int idAux)
@@ -160,11 +168,24 @@ public class App
     // fun 10
     public void newAgenda()
     {
-    }
-    public void initAgendas()
-    {
+	String ty;
+	int f, s, day;
+	
+	System.out.println("Input type: (Monthly/Weekly/Bimonthly):");
+	ty = input.nextLine();
+	if(ty == "Monthly")
+		{
+		    System.out.println("Input day of the Month (1-31):");
+		    day = input.nextInt();
+		}
+	System.out.println("Monday=1 | Tuesday=2 | Wendsday=3 | Thursday=4 | Friday=5 | Saturday=6 | Sunday=7");
+	System.out.println("Input day of the Week::");
+	day = input.nextInt();
 
+	System.out.println("Input Week day:");
+	agendaList.add(new Agenda(1, "Monthly", 0, 0));
     }
+
 
     public static void main(String[] args)
     {
