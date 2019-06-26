@@ -27,7 +27,7 @@ public class Employee implements EmployeeUtils
 	this.infoAgenda = payday;
 	this.Pay = payment;
 	
-	if (syndie == "y") {
+	if (syndie.equals("y")) {
 	    System.out.println("Input Union Monthly fee:");
 	    unionFee = input.nextInt();
 	    this.infoSyndie.manageSyndie(unionFee, 0);

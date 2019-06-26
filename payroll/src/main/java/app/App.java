@@ -15,6 +15,7 @@ public class App
     public static Calendar c = Calendar.getInstance();
     public static int lastPayroll = c.get(Calendar.DAY_OF_YEAR) - 1;
     public static int id = 0;
+    public static int plan= 2;
     public static Scanner input = new Scanner(System.in);
 
     // fun1
@@ -22,13 +23,14 @@ public class App
     {
 	String name, address, type, isSyndie, payMethod;
 	double income, percentage;
+	name = input.nextLine();
 	System.out.println("Input employee name:");
 	name = input.nextLine();
 	
 	System.out.println("Input employee adress:");
 	address = input.nextLine();
 	
-	System.out.println("Input employee type: (hourly/commisioned/salaried):");
+	System.out.println("Input employee type: (Hourly/Commisioned/Salaried):");
 	type = input.nextLine();
 	
 	System.out.println("The employee wishes to join the Union? (y/n)");
@@ -38,22 +40,23 @@ public class App
 	payMethod = input.nextLine();
 	
 	
-	if(type == "hourly")
+	if(type.equals("Hourly"))
 	    {
 		employeeList.add(new Hourly(id, name, address, type, isSyndie, payMethod, agendaList.get(1), 0));
 	    }
 	
-	System.out.println("Input employee base Income:");
-	income = input.nextDouble();
-	
-	if(type == "commisioned")
+	else if(type.equals("Commisioned"))
 	    {
+		System.out.println("Input employee base Income:");
+		income = input.nextDouble();
 		System.out.println("Input employee percentage on sales revenue:");
 		percentage = input.nextDouble();
 		employeeList.add(new Commisioned(id, name, address, type, isSyndie, payMethod, null, income, percentage, 0));
 	    }
 	else
 	    {
+		System.out.println("Input employee base Income:");
+		income = input.nextDouble();
 		employeeList.add(new Salaried(id, name, address, type, isSyndie, payMethod, agendaList.get(0), income));
 	    }
 
@@ -68,7 +71,7 @@ public class App
     }
 
     // fun3
-    public void launchPointCard(int idAux)
+    public static void launchPointCard(int idAux)
     {
 	double init, end, tot;
 	System.out.println("Input starting hour");
@@ -81,7 +84,7 @@ public class App
 	((Hourly)employeeList.get(idAux)).setHours(tot);;
     }
     // fun4
-    public void launchSaleRevenue(int idAux)
+    public static void launchSaleRevenue(int idAux)
     {
 	System.out.println("Add sale pricing");
 	double pricing;
@@ -91,11 +94,12 @@ public class App
 	
     }
     // fun5
-    public void launchServiceCost(int idAux)
+    public static void launchServiceCost(int idAux)
     {
-	System.out.println("Add Union service");
 	double pricing;
+	System.out.println("Add Union service");
 	pricing = input.nextDouble();
+
 	employeeList.get(idAux).setService(pricing);
     }
     // fun6
@@ -104,6 +108,10 @@ public class App
 	String name, address, type, isSyndie, payMethod;
 	double income, percentage;
 	
+	System.out.printf("You are noew editing Employee %s%n", employeeList.get(idAux).getEmployeeName());
+	System.out.println("WARNING:");
+	System.out.println("Make sure to leave the field blank if you don't want to change it");
+
 	System.out.println("Input employee name:");
 	name = input.nextLine();
 	if( name == null)
@@ -137,18 +145,17 @@ public class App
 			((Hourly)employeeList.get(idAux)).manageEmployee(idAux, name, address, type, isSyndie, payMethod, agendaList.get(1), 0.0);
 		    }
 	
-		System.out.println("Input employee base Income:");
-		income = input.nextDouble();
-
-		if(income == 0)
-		    {
-			income = ((Salaried)employeeList.get(idAux)).getIncome();
-			
-		    }
-		
 		if(type == "commisioned")
 		    {
 			System.out.println("Input employee base Income:");
+			income = input.nextDouble();
+
+			if(income == 0)
+			    {
+				income = ((Salaried)employeeList.get(idAux)).getIncome();
+			
+			    }
+			System.out.println("Input employee percentage on sales:");
 			percentage = input.nextDouble();
 
 			if(percentage == 0)
@@ -160,30 +167,54 @@ public class App
 		    }
 		else
 		    {
+			System.out.println("Input employee base Income:");
+			income = input.nextDouble();
+
+			if(income == 0)
+			    {
+				income = ((Salaried)employeeList.get(idAux)).getIncome();
+			
+			    }
 			((Salaried)employeeList.get(idAux)).manageEmployee(idAux, name, address, type, isSyndie, payMethod, agendaList.get(0), income);
 		    }
 	    }	
     }
 
     // fun 10
-    public void newAgenda()
+    public static void newAgenda()
     {
 	String ty;
 	int f, s, day;
-	
+	ty = input.nextLine();
 	System.out.println("Input type: (Monthly/Weekly/Bimonthly):");
 	ty = input.nextLine();
-	if(ty == "Monthly")
-		{
-		    System.out.println("Input day of the Month (1-31):");
-		    day = input.nextInt();
-		}
-	System.out.println("Monday=1 | Tuesday=2 | Wendsday=3 | Thursday=4 | Friday=5 | Saturday=6 | Sunday=7");
-	System.out.println("Input day of the Week::");
-	day = input.nextInt();
-
-	System.out.println("Input Week day:");
-	agendaList.add(new Agenda(1, "Monthly", 0, 0));
+	
+	if(ty.equals("Monthly"))
+	    {
+		System.out.println("Input day of the Month (1-31):");
+		day = input.nextInt();
+		agendaList.add(new Agenda(day, ty, 0, 0));
+	    }
+	else if(ty.equals("Weekly"))
+	    {
+		System.out.println("Monday=1 | Tuesday=2 | Wendsday=3 | Thursday=4 | Friday=5 | Saturday=6 | Sunday=7");
+		System.out.println("Input day of the Week::");
+		day = input.nextInt();
+		agendaList.add(new Agenda(day, ty, 0, 0));
+	    }
+	else
+	    {
+		System.out.println("Monday=1 | Tuesday=2 | Wendsday=3 | Thursday=4 | Friday=5 | Saturday=6 | Sunday=7");
+		System.out.println("Input day of the Week::");
+		day = input.nextInt();
+		System.out.println("Input first Week : (1-4)");
+		f = input.nextInt();
+		System.out.println("Input second Week : (first Week-4)");
+		s = input.nextInt();
+		agendaList.add(new Agenda(day, ty, f, s));
+	    }
+	plan++;
+	System.out.printf("The created Agenda is the number %d; you can now assign existing employees to it%n", plan);
     }
 
 
@@ -193,19 +224,48 @@ public class App
 	agendaList.add(new Agenda(5, "Weekly", 0, 0));
 	agendaList.add(new Agenda(5, "Bimonthly", 2, 4));
 	//employeeList.add(new Employee(0, "Jane Doe","Shonan Av. 1994", "Salaried", "y", "Mail", agendaList.get(0)));
-
-	
 	int operation, idAux;
-	System.out.println("Operation");
-	operation = input.nextInt();
+	boolean loop = true;
+
+	while(loop)
+	    {
+		idAux = 9999;
+		System.out.println("Wecolme to the Payroll System, please select your operation:");
+		System.out.printf("1- Add Employee%n2- Remove Employee%n3- Lauch PointCard%n4- Add a sale Revenue%n5- Add a Union service cost%n6- Edit a employee%n7- Create a new Payroll agenda%n");
+		operation = input.nextInt();
 	
- 	if (operation == 1) {
-	    newEmployee();
- 	}
-	if (operation == 2) {
-	    System.out.println("Input Employee ID");
-	    rmEmployee(idAux);
- 	}
+		if (operation == 1) {
+		    newEmployee();
+		}
+		else if (operation == 2) {
+		    System.out.println("Input Employee ID:");
+		    idAux = input.nextInt();
+		    rmEmployee(idAux);
+		}
+		else if (operation == 3) {
+		    System.out.println("Input Employee ID:");
+		    idAux = input.nextInt();
+		    launchPointCard(idAux);
+		}
+		else if (operation == 4) {
+		    System.out.println("Input Employee ID:");
+		    idAux = input.nextInt();
+		    launchSaleRevenue(idAux);
+		}
+		else if (operation == 5) {
+		    System.out.println("Input Employee ID:");
+		    idAux = input.nextInt();
+		    launchServiceCost(idAux);
+		}
+		else if (operation == 6) {
+		    System.out.println("Input Employee ID:");
+		    idAux = input.nextInt();
+		    newEditEmployee(idAux);
+		}
+		else if (operation == 7) {
+		    newAgenda();
+		}
+	    }
     }
 	
 }
