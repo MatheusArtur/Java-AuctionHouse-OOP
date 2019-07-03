@@ -1,7 +1,9 @@
-* Payroll UML diagram
+* Payroll OOP
+** How to use
+   main function is located at ./payroll/src/main/java/app/App.java. Just read and follow the instructions.
 
-** Latest version
-Corrected relations, main and included *Interface*
+** UML
+   old version. Corrected relations, main and included *Interface*
 [[./uml/payroll-2.1.png]]
 
 ** Older versions

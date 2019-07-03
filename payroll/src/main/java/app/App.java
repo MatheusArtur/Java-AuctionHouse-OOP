@@ -352,16 +352,19 @@ public class App
 			}
 		}
 		else if (operation == 11) {
-		    status.popRedo();
 		    if(status.popUndo() != null)
 			{
-			    status.pushUndo((Employee)employeeList.clone());				    
+			    status.pushUndo((Employee)employeeList.clone());
 			}
 		}
 		else{
 		    System.out.printf("Invalid%n");
 		}
-		status.pushUndo((Employee)employeeList.clone());
+		
+		if(operation != 10 || operation != 11)
+		    {
+			status.pushUndo((Employee)employeeList.clone());			    
+		    }
 	    }
     }
 	
