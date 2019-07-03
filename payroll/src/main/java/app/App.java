@@ -1,4 +1,5 @@
-package app;
+ package app;
+import java.lang.Thread.State;
 import java.util.ArrayList;
 import employee.*;
 import employee.types.Commisioned;
@@ -7,7 +8,8 @@ import employee.types.Salaried;
 import agenda.*;
 import java.util.Calendar;
 import java.util.Scanner;
-    
+import memento.*;
+
 public class App
 {
     private static final ArrayList<Employee> employeeList = new ArrayList<Employee>();
@@ -17,7 +19,7 @@ public class App
     public static int id = 0;
     public static int plan= 2;
     public static Scanner input = new Scanner(System.in);
-    
+    public static final Memento status = new Memento();
     public static boolean isNullOrEmpty(String str)
     {
         if(str != null && !str.isEmpty())
@@ -296,14 +298,14 @@ public class App
 	    {
 		idAux = 9999;
 		System.out.println("Wecolme to the Payroll System, please select your operation:");
-		System.out.printf("0- Quit%n1- Add Employee%n2- Remove Employee%n3- Lauch PointCard%n4- Add a sale Revenue%n5- Add a Union service cost%n6- Edit an employee%n7- Create a new Payroll agenda%n8- Edit an created employee Agenda%n9- Run Payroll%n");
+		System.out.printf("0- Quit%n1- Add Employee%n2- Remove Employee%n3- Lauch PointCard%n4- Add a sale Revenue%n5- Add a Union service cost%n6- Edit an employee%n7- Create a new Payroll agenda%n8- Edit an created employee Agenda%n9- Run Payroll%n10- Undo%n11- Redo%n");
 		operation = input.nextInt();
 
 		
 		if (operation == 0) {
 		    return ;
 		}
-		if (operation == 1) {
+		else if (operation == 1) {
 		    newEmployee();
 		}
 		else if (operation == 2) {
@@ -342,9 +344,24 @@ public class App
 		else if (operation == 9) {
 		    runPayroll();
 		}
+		else if (operation == 10) {
+		    status.popUndo();
+		    if(status.popRedo() != null)
+			{
+			    status.pushRedo((Employee)employeeList.clone());
+			}
+		}
+		else if (operation == 11) {
+		    status.popRedo();
+		    if(status.popUndo() != null)
+			{
+			    status.pushUndo((Employee)employeeList.clone());				    
+			}
+		}
 		else{
 		    System.out.printf("Invalid%n");
 		}
+		status.pushUndo((Employee)employeeList.clone());
 	    }
     }
 	
