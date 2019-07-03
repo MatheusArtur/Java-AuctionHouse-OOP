@@ -1,6 +1,6 @@
 package employee;
 
-class Payment
+public class Payment
 {
     protected String payMethod;
     protected int zipCode;

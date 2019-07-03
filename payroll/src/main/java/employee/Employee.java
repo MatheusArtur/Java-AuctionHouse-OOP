@@ -2,6 +2,7 @@ package employee;
 import agenda.*;
 import employee.*;
 import java.util.Scanner;
+import error.*;
 
 public class Employee implements EmployeeUtils
 {
@@ -14,6 +15,12 @@ public class Employee implements EmployeeUtils
     protected String Synd;
     protected String Pay;
     
+    public static boolean isNullOrEmpty(String str)
+    {
+        if(str != null && !str.isEmpty())
+            return false;
+        return true;
+    }
     
     Scanner input = new Scanner(System.in);
     
@@ -54,7 +61,7 @@ public class Employee implements EmployeeUtils
 	this.employeeName = name;
 	this.employeeAdress = adress;
 	
-	if (syndie == "y") {
+	if (syndie.equals("y")) {
 	    System.out.println("Input Union Monthly fee:");
 	    unionFee = input.nextInt();
 	    System.out.println("Input Union Service fee:");
@@ -62,7 +69,7 @@ public class Employee implements EmployeeUtils
 	    infoSyndie.manageSyndie(unionFee, unionService);
 	}
 	
-	if(payment != null)
+	if(!isNullOrEmpty(payment))
 		{
 		    System.out.println("Input Employee Bank account agency:");
 		    employeeAgency = input.nextInt();

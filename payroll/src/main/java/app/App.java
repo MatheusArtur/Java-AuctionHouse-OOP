@@ -7,7 +7,7 @@ import employee.types.Salaried;
 import agenda.*;
 import java.util.Calendar;
 import java.util.Scanner;
-
+    
 public class App
 {
     private static final ArrayList<Employee> employeeList = new ArrayList<Employee>();
@@ -17,6 +17,13 @@ public class App
     public static int id = 0;
     public static int plan= 2;
     public static Scanner input = new Scanner(System.in);
+    
+    public static boolean isNullOrEmpty(String str)
+    {
+        if(str != null && !str.isEmpty())
+            return false;
+        return true;
+    }
 
     // fun1
     public static void newEmployee()
@@ -111,73 +118,68 @@ public class App
 	System.out.printf("You are noew editing Employee %s%n", employeeList.get(idAux).getEmployeeName());
 	System.out.println("WARNING:");
 	System.out.println("Make sure to leave the field blank if you don't want to change it");
-
+	
+	name = input.nextLine();
 	System.out.println("Input employee name:");
 	name = input.nextLine();
-	if( name == null)
+	
+	if(isNullOrEmpty(name))
 	    {
-		name = employeeList.get(idAux).getEmployeeName();
+		name = employeeList.get(idAux).getEmployeeName();		
 	    }
 
-	
 	System.out.println("Input employee adress:");
 	address = input.nextLine();
-	if(address == null)
+	
+	if(isNullOrEmpty(address))
 	    {
 		address = employeeList.get(idAux).getEmployeeAdress();
 	    }
-	System.out.println("Input employee type: (hourly/commisioned/salaried):");
+	
+	System.out.println("Input employee type: (Hourly/Commisioned/Salaried):");
 	type = input.nextLine();
 
-	System.out.println("The employee wishes to join the Union? (y/n)");
-	isSyndie = input.nextLine();
 
+	System.out.println("The employee wishes to join or update Union information? (y/n)");
+	isSyndie = input.nextLine();
 
 	System.out.println("The employee preferred payment method: (Mail/Bank/Hand)");
 	payMethod = input.nextLine();
 
-	if(type != null)
+	if(type.equals("Hourly"))
 	    {
-		
-		
-		if(type == "hourly")
-		    {
-			((Hourly)employeeList.get(idAux)).manageEmployee(idAux, name, address, type, isSyndie, payMethod, agendaList.get(1), 0.0);
-		    }
+		employeeList.remove(idAux);
+		employeeList.set(idAux, new Hourly(idAux, name, address, type, isSyndie, payMethod, agendaList.get(1), 0.0));
+	    }
 	
-		if(type == "commisioned")
-		    {
-			System.out.println("Input employee base Income:");
-			income = input.nextDouble();
+	else if(type.equals("Commissioned"))
+	    {
+		System.out.println("Input employee base Income:");
+		income = input.nextDouble();
 
-			if(income == 0)
-			    {
-				income = ((Salaried)employeeList.get(idAux)).getIncome();
-			
-			    }
-			System.out.println("Input employee percentage on sales:");
-			percentage = input.nextDouble();
+		System.out.println("Input employee percentage on sales:");
+		percentage = input.nextDouble();
+		
+		employeeList.remove(idAux);
+		employeeList.set(idAux, new Commisioned(idAux, name, address, type, isSyndie, payMethod, agendaList.get(2), income, percentage, 0.0));
 
-			if(percentage == 0)
-			    {
-				percentage = ((Commisioned)employeeList.get(idAux)).getSalesPercentage();
-
-			    }
-			((Commisioned)employeeList.get(idAux)).manageEmployee(idAux, name, address, type, isSyndie, payMethod, agendaList.get(2), income, percentage, 0.0);
-		    }
-		else
-		    {
-			System.out.println("Input employee base Income:");
-			income = input.nextDouble();
-
-			if(income == 0)
-			    {
-				income = ((Salaried)employeeList.get(idAux)).getIncome();
-			
-			    }
-			((Salaried)employeeList.get(idAux)).manageEmployee(idAux, name, address, type, isSyndie, payMethod, agendaList.get(0), income);
-		    }
-	    }	
+	    }
+	else if(type.equals("Salaried"))
+	    {
+		System.out.println("Input employee base Income:");
+		income = input.nextDouble();
+		employeeList.remove(idAux);
+		employeeList.set(idAux, new Salaried(idAux, name, address, type, isSyndie, payMethod, agendaList.get(0), income));
+	    }
+	else if(isNullOrEmpty(type))
+	    {
+		((Employee)employeeList.get(idAux)).manageEmployee(idAux, name, address, type, isSyndie, payMethod);
+	    }
+	else
+	    {
+		System.out.printf("Invalid Employee Type, ABORTED %n");
+		return ;
+	    }
     }
 
     // fun 10
@@ -223,6 +225,11 @@ public class App
 	System.out.println("Please input the new Agenda index you wish to assign to the employee");
 	newAgendaIndex = input.nextInt();
 	employeeList.get(idAux).setInfoAgenda(agendaList.get(newAgendaIndex));
+    }
+
+    public static void runPayroll()
+    {
+	
     }
 
     public static void main(String[] args)
