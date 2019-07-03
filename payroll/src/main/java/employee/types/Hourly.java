@@ -5,11 +5,13 @@ import agenda.*;
 public class Hourly extends Employee
 {
     protected double weeklyHours;
+    protected double perhour;
 
-    public Hourly(int id, String name, String adress, String type, String syndie, String payment, Agenda payday, double hours)
+    public Hourly(int id, String name, String adress, String type, String syndie, String payment, Agenda payday, double hours, double tax)
     {
 	super(id, name, adress, type, syndie, payment, payday);
 	this.weeklyHours = hours;
+	this.perhour = tax;
     }
 
     public void manageEmployee(int id, String name, String adress, String type, String syndie, String payment, Agenda payday, double hours)
@@ -18,13 +20,19 @@ public class Hourly extends Employee
 	this.weeklyHours = hours;
     }
 
-    public void setHours(double value)
-    {
-	this.weeklyHours += value;
-    }
+	public double getWeeklyHours() {
+		return weeklyHours;
+	}
 
-    public double getHours()
-    {
-	return (this.weeklyHours);
-    }
+	public void setWeeklyHours(double weeklyHours) {
+		this.weeklyHours = weeklyHours;
+	}
+
+	public double getPerhour() {
+		return perhour;
+	}
+
+	public void setPerhour(double perhour) {
+		this.perhour = perhour;
+	}
 }

@@ -29,7 +29,7 @@ public class App
     public static void newEmployee()
     {
 	String name, address, type, isSyndie, payMethod;
-	double income, percentage;
+	double income, percentage, perhour;
 	name = input.nextLine();
 	System.out.println("Input employee name:");
 	name = input.nextLine();
@@ -49,7 +49,9 @@ public class App
 	
 	if(type.equals("Hourly"))
 	    {
-		employeeList.add(new Hourly(id, name, address, type, isSyndie, payMethod, agendaList.get(1), 0));
+		System.out.println("Input employee Hourly Salary:");
+		perhour = input.nextDouble();
+		employeeList.add(new Hourly(id, name, address, type, isSyndie, payMethod, agendaList.get(1), 0, perhour));
 	    }
 	
 	else if(type.equals("Commisioned"))
@@ -73,7 +75,7 @@ public class App
     // fun2
     public static void rmEmployee(int idAux)
     {
-	employeeList.get(idAux).manageEmployee(9999, null, null, null, null, null);
+	employeeList.remove(idAux);
 	System.out.println("Employee PURGED");
     }
 
@@ -113,7 +115,7 @@ public class App
     public static void newEditEmployee(int idAux)
     {
 	String name, address, type, isSyndie, payMethod;
-	double income, percentage;
+	double income, percentage, perhour;
 	
 	System.out.printf("You are noew editing Employee %s%n", employeeList.get(idAux).getEmployeeName());
 	System.out.println("WARNING:");
@@ -148,8 +150,10 @@ public class App
 
 	if(type.equals("Hourly"))
 	    {
+		System.out.println("Input employee Hourly Salary:");
+		perhour = input.nextDouble();
 		employeeList.remove(idAux);
-		employeeList.set(idAux, new Hourly(idAux, name, address, type, isSyndie, payMethod, agendaList.get(1), 0.0));
+		employeeList.set(idAux, new Hourly(idAux, name, address, type, isSyndie, payMethod, agendaList.get(1), 0.0, perhour));
 	    }
 	
 	else if(type.equals("Commissioned"))
@@ -229,7 +233,54 @@ public class App
 
     public static void runPayroll()
     {
-	
+	Agenda tmp;
+	inr greatday;
+	for(Employee emp: employeeList)
+	    {
+		tmp = emp.getInfoAgenda();
+		emp.getClass();
+		if(tmp.getCicle().equals("Monthly"))
+		    {
+			if(tmp.getDay() == c.get(Calendar.DAY_OF_MONTH))
+				{
+				    System.out.printf("%n PAID %lf %n",((Salaried)emp).getIncome());
+				}
+		    }
+		else if(tmp.getCicle().equals("Weekly"))
+		    {
+			if(tmp.getDay() == c.get(Calendar.DAY_OF_WEEK))
+			    {
+				if(((Hourly)emp).getWeeklyHours() > 8.0)
+				    {
+					System.out.printf("%n PAID %lf %n",(((Hourly)emp).getWeeklyHours() * ((Hourly)emp).getPerhour()) * 1.5);					
+				    }
+				else
+				    {
+					System.out.printf("%n PAID %lf %n",(((Hourly)emp).getWeeklyHours() * ((Hourly)emp).getPerhour()) * 1.0);					
+					}
+
+			    }
+		    }
+		else
+		    {
+			if(tmp.getDay() == c.get(Calendar.DAY_OF_WEEK))
+			    {
+				greatday = c.get(Calendar.DAY_OF_MONTH);
+				if(greatday >= 1 && greatday <= 7 && tmp.getFirstWeek() == 1){
+				    System.out.printf("%n PAID %lf %n",((((Commisioned)emp).getIncome()/2))+(((Commisioned)emp).getSalesRevenue()*(((Commisioned)emp).getSalesPercentage() /10)));					
+				}
+				else if(greatday >= 8 && greatday <= 14 && tmp.getFirstWeek() == 2 || tmp.getSecondWeek() == 2){
+				    System.out.printf("%n PAID %lf %n",((((Commisioned)emp).getIncome()/2))+(((Commisioned)emp).getSalesRevenue()*(((Commisioned)emp).getSalesPercentage() /10)));					
+				    }
+				else if(greatday >= 15 && greatday <= 21 && tmp.getFirstWeek() == 3 || tmp.getSecondWeek() == 3){
+				    System.out.printf("%n PAID %lf %n",((((Commisioned)emp).getIncome()/2))+(((Commisioned)emp).getSalesRevenue()*(((Commisioned)emp).getSalesPercentage() /10)));					
+				}
+				else if(greatday >= 22 && greatday <= 31 && tmp.getSecondWeek() == 4){
+				    System.out.printf("%n PAID %lf %n",((((Commisioned)emp).getIncome()/2))+(((Commisioned)emp).getSalesRevenue()*(((Commisioned)emp).getSalesPercentage() /10)));					
+				}
+			    }
+		    }
+	    }
     }
 
     public static void main(String[] args)
@@ -245,9 +296,13 @@ public class App
 	    {
 		idAux = 9999;
 		System.out.println("Wecolme to the Payroll System, please select your operation:");
-		System.out.printf("1- Add Employee%n2- Remove Employee%n3- Lauch PointCard%n4- Add a sale Revenue%n5- Add a Union service cost%n6- Edit an employee%n7- Create a new Payroll agenda%n8- Edit an created employee Agenda%n");
+		System.out.printf("0- Quit%n1- Add Employee%n2- Remove Employee%n3- Lauch PointCard%n4- Add a sale Revenue%n5- Add a Union service cost%n6- Edit an employee%n7- Create a new Payroll agenda%n8- Edit an created employee Agenda%n9- Run Payroll%n");
 		operation = input.nextInt();
-	
+
+		
+		if (operation == 0) {
+		    return ;
+		}
 		if (operation == 1) {
 		    newEmployee();
 		}
@@ -283,6 +338,12 @@ public class App
 		    System.out.println("Input Employee ID:");
 		    idAux = input.nextInt();
 		    assignAgenda(idAux);
+		}
+		else if (operation == 9) {
+		    runPayroll();
+		}
+		else{
+		    System.out.printf("Invalid%n");
 		}
 	    }
     }
