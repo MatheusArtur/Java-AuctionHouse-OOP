@@ -1,4 +1,4 @@
- package app;
+package app;
 import java.lang.Thread.State;
 import java.util.ArrayList;
 import employee.*;
@@ -155,7 +155,7 @@ public class App
 		System.out.println("Input employee Hourly Salary:");
 		perhour = input.nextDouble();
 		employeeList.remove(idAux);
-		employeeList.set(idAux, new Hourly(idAux, name, address, type, isSyndie, payMethod, agendaList.get(1), 0.0, perhour));
+		employeeList.add(idAux, new Hourly(idAux, name, address, type, isSyndie, payMethod, agendaList.get(1), 0, perhour));
 	    }
 	
 	else if(type.equals("Commissioned"))
@@ -167,7 +167,7 @@ public class App
 		percentage = input.nextDouble();
 		
 		employeeList.remove(idAux);
-		employeeList.set(idAux, new Commisioned(idAux, name, address, type, isSyndie, payMethod, agendaList.get(2), income, percentage, 0.0));
+		employeeList.add(idAux, new Commisioned(idAux, name, address, type, isSyndie, payMethod, agendaList.get(2), income, percentage, 0.0));
 
 	    }
 	else if(type.equals("Salaried"))
@@ -175,7 +175,7 @@ public class App
 		System.out.println("Input employee base Income:");
 		income = input.nextDouble();
 		employeeList.remove(idAux);
-		employeeList.set(idAux, new Salaried(idAux, name, address, type, isSyndie, payMethod, agendaList.get(0), income));
+		employeeList.add(idAux, new Salaried(idAux, name, address, type, isSyndie, payMethod, agendaList.get(0), income));
 	    }
 	else if(isNullOrEmpty(type))
 	    {
@@ -236,7 +236,7 @@ public class App
     public static void runPayroll()
     {
 	Agenda tmp;
-	inr greatday;
+	int greatday;
 	for(Employee emp: employeeList)
 	    {
 		tmp = emp.getInfoAgenda();
@@ -286,86 +286,58 @@ public class App
     }
 
     public static void main(String[] args)
-    {
-	agendaList.add(new Agenda(1, "Monthly", 0, 0));
-	agendaList.add(new Agenda(5, "Weekly", 0, 0));
-	agendaList.add(new Agenda(5, "Bimonthly", 2, 4));
-	//employeeList.add(new Employee(0, "Jane Doe","Shonan Av. 1994", "Salaried", "y", "Mail", agendaList.get(0)));
-	int operation, idAux;
-	boolean loop = true;
+	{
+		agendaList.add(new Agenda(1, "Monthly", 0, 0));
+		agendaList.add(new Agenda(5, "Weekly", 0, 0));
+		agendaList.add(new Agenda(5, "Bimonthly", 2, 4));
+		//employeeList.add(new Employee(0, "Jane Doe","Shonan Av. 1994", "Salaried", "y", "Mail", agendaList.get(0)));
+		int operation, idAux;
+		boolean loop = true;
 
-	while(loop)
-	    {
-		idAux = 9999;
-		System.out.println("Wecolme to the Payroll System, please select your operation:");
-		System.out.printf("0- Quit%n1- Add Employee%n2- Remove Employee%n3- Lauch PointCard%n4- Add a sale Revenue%n5- Add a Union service cost%n6- Edit an employee%n7- Create a new Payroll agenda%n8- Edit an created employee Agenda%n9- Run Payroll%n10- Undo%n11- Redo%n");
-		operation = input.nextInt();
+		while (loop) {
+			idAux = 9999;
+			System.out.println("Wecolme to the Payroll System, please select your operation:");
+			System.out.printf(
+					"0- Quit%n1- Add Employee%n2- Remove Employee%n3- Lauch PointCard%n4- Add a sale Revenue%n5- Add a Union service cost%n6- Edit an employee%n7- Create a new Payroll agenda%n8- Edit an created employee Agenda%n9- Run Payroll%n");
+			operation = input.nextInt();
 
-		
-		if (operation == 0) {
-		    return ;
-		}
-		else if (operation == 1) {
-		    newEmployee();
-		}
-		else if (operation == 2) {
-		    System.out.println("Input Employee ID:");
-		    idAux = input.nextInt();
-		    rmEmployee(idAux);
-		}
-		else if (operation == 3) {
-		    System.out.println("Input Employee ID:");
-		    idAux = input.nextInt();
-		    launchPointCard(idAux);
-		}
-		else if (operation == 4) {
-		    System.out.println("Input Employee ID:");
-		    idAux = input.nextInt();
-		    launchSaleRevenue(idAux);
-		}
-		else if (operation == 5) {
-		    System.out.println("Input Employee ID:");
-		    idAux = input.nextInt();
-		    launchServiceCost(idAux);
-		}
-		else if (operation == 6) {
-		    System.out.println("Input Employee ID:");
-		    idAux = input.nextInt();
-		    newEditEmployee(idAux);
-		}
-		else if (operation == 7) {
-		    newAgenda();
-		}
-		else if (operation == 8) {
-		    System.out.println("Input Employee ID:");
-		    idAux = input.nextInt();
-		    assignAgenda(idAux);
-		}
-		else if (operation == 9) {
-		    runPayroll();
-		}
-		else if (operation == 10) {
-		    status.popUndo();
-		    if(status.popRedo() != null)
-			{
-			    status.pushRedo((Employee)employeeList.clone());
+			if (operation == 0) {
+				return;
+			} else if (operation == 1) {
+				newEmployee();
+			} else if (operation == 2) {
+				System.out.println("Input Employee ID:");
+				idAux = input.nextInt();
+				rmEmployee(idAux);
+			} else if (operation == 3) {
+				System.out.println("Input Employee ID:");
+				idAux = input.nextInt();
+				launchPointCard(idAux);
+			} else if (operation == 4) {
+				System.out.println("Input Employee ID:");
+				idAux = input.nextInt();
+				launchSaleRevenue(idAux);
+			} else if (operation == 5) {
+				System.out.println("Input Employee ID:");
+				idAux = input.nextInt();
+				launchServiceCost(idAux);
+			} else if (operation == 6) {
+				System.out.println("Input Employee ID:");
+				idAux = input.nextInt();
+				newEditEmployee(idAux);
+			} else if (operation == 7) {
+				newAgenda();
+			} else if (operation == 8) {
+				System.out.println("Input Employee ID:");
+				idAux = input.nextInt();
+				assignAgenda(idAux);
+			} else if (operation == 9) {
+				runPayroll();
+			} else {
+				System.out.printf("Invalid%n");
 			}
+
 		}
-		else if (operation == 11) {
-		    if(status.popUndo() != null)
-			{
-			    status.pushUndo((Employee)employeeList.clone());
-			}
-		}
-		else{
-		    System.out.printf("Invalid%n");
-		}
-		
-		if(operation != 10 || operation != 11)
-		    {
-			status.pushUndo((Employee)employeeList.clone());			    
-		    }
-	    }
-    }
-	
+
+	}
 }

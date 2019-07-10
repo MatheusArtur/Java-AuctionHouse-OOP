@@ -23,7 +23,7 @@ public class Employee implements EmployeeUtils
     }
     
     Scanner input = new Scanner(System.in);
-    
+
     public Employee(int id, String name, String adress, String type, String syndie, String payment, Agenda payday)
     {
 	int unionFee, employeeAccount, employeeAgency, employeeZip;
