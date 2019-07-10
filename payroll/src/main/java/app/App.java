@@ -92,7 +92,7 @@ public class App
 	
 	tot = end - init;
 	
-	((Hourly)employeeList.get(idAux)).setHours(tot);;
+	((Hourly)employeeList.get(idAux)).setWeeklyHours(tot);
     }
     // fun4
     public static void launchSaleRevenue(int idAux)
