@@ -11,7 +11,7 @@ public class Syndie
 	this.serviceTax = service;
     }
 
-    public void manageSyndie(int tax, int service)
+    public void manageSyndie(Double tax, double service)
     {
 	this.monthlyTax = tax;
 	this.serviceTax = service;
@@ -32,6 +32,4 @@ public class Syndie
 	public void setServiceTax(double serviceTax) {
 		this.serviceTax += serviceTax;
 	}
-
-
 }
