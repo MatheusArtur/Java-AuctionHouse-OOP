@@ -20,21 +20,18 @@ public class Commisioned extends Salaried
 	this.salesPercentage = cut;
     }
 
-	public double getSalesRevenue() {
-		return salesRevenue;
-	}
+    public void setSalesRevenue(double salesRevenue)
+    {
+	this.salesRevenue = salesRevenue;
+    }
 
-	public void setSalesRevenue(double salesRevenue) {
-		this.salesRevenue += salesRevenue;
-	}
+    public double getSalesRevenue()
+    {
+	return salesRevenue;
+    }
 
-	public double getSalesPercentage() {
-		return salesPercentage;
-	}
-
-	public void setSalesPercentage(double salesPercentage) {
-		this.salesPercentage = salesPercentage;
-	}
-
-
+    public double getSalesPercentage()
+    {
+	return salesPercentage;
+    }
 }

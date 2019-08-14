@@ -19,20 +19,19 @@ public class Hourly extends Employee
 	super.manageEmployee(id, name, adress, type, syndie, payment);
 	this.weeklyHours = hours;
     }
+    
+    public void setWeeklyHours(double weeklyHours)
+    {
+	this.weeklyHours = weeklyHours;
+    }
 
-	public double getWeeklyHours() {
-		return weeklyHours;
-	}
+    public double getWeeklyHours()
+    {
+	return weeklyHours;
+    }
 
-	public void setWeeklyHours(double weeklyHours) {
-		this.weeklyHours = weeklyHours;
-	}
-
-	public double getPerhour() {
-		return perhour;
-	}
-
-	public void setPerhour(double perhour) {
-		this.perhour = perhour;
-	}
+    public double getPerhour()
+    {
+	return perhour;
+    }
 }

@@ -116,9 +116,105 @@ public class inputHandler
 		    {
 			System.out.printf(required);
 			pas = Integer.parseInt(App.input.nextLine());
-			if(pas > size-1)
+			if(pas > size-1 | pas < 0)
 			    {
 				System.out.println("ERROR: Employee does not exists");
+			    }
+			else
+			    {
+				return pas;
+			    }
+		    } catch(NumberFormatException e)
+		    {
+			System.out.println("ERROR: Add a numeric Value");
+		    }
+	    }
+    }
+
+    public static int catchAgenda(String required, int size)
+    {
+	int pas;
+	while(true)
+	    {
+		try
+		    {
+			System.out.printf(required);
+			pas = Integer.parseInt(App.input.nextLine());
+			if(pas > size-1 | pas < 0)
+			    {
+				System.out.println("ERROR: Agenda does not exists");
+			    }
+			else
+			    {
+				return pas;
+			    }
+		    } catch(NumberFormatException e)
+		    {
+			System.out.println("ERROR: Add a numeric Value");
+		    }
+	    }
+    }
+
+    public static int catchMonth(String required)
+    {
+	int pas;
+	while(true)
+	    {
+		try
+		    {
+			System.out.printf(required);
+			pas = Integer.parseInt(App.input.nextLine());
+			if(pas > 31 | pas < 1)
+			    {
+				System.out.println("ERROR: Invalid Day");
+			    }
+			else
+			    {
+				return pas;
+			    }
+		    } catch(NumberFormatException e)
+		    {
+			System.out.println("ERROR: Add a numeric Value");
+		    }
+	    }
+    }
+
+    public static int catchWeek(String required)
+    {
+	int pas;
+	while(true)
+	    {
+		try
+		    {
+			System.out.printf(required);
+			pas = Integer.parseInt(App.input.nextLine());
+			if(pas > 4 | pas < 1)
+			    {
+				System.out.println("ERROR: Invalid week");
+			    }
+			else
+			    {
+				return pas;
+			    }
+		    } catch(NumberFormatException e)
+		    {
+			System.out.println("ERROR: Add a numeric Value");
+		    }
+	    }
+    }
+
+    public static int catchDay(String required)
+    {
+	int pas;
+	while(true)
+	    {
+		try
+		    {
+			System.out.printf(required);
+			pas = Integer.parseInt(App.input.nextLine());
+			if(pas > 7 | pas < 1)
+			    {
+				System.out.println("ERROR: Invalid Day");
 			    }
 			else
 			    {

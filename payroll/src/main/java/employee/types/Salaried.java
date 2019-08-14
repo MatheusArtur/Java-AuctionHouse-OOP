@@ -18,14 +18,8 @@ public class Salaried extends Employee
 	this.bruteIncome = income;
     }
 
-	public void setIncome(double value)
-    {
-	this.bruteIncome = value;
-    }
-
     public double getIncome()
     {
-	return (this.bruteIncome);
+	return bruteIncome;
     }
-
 }

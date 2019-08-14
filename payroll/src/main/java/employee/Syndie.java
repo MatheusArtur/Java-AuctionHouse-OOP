@@ -17,19 +17,18 @@ public class Syndie
 	this.serviceTax = service;
     }
 
-	public double getMonthlyTax() {
-		return monthlyTax;
-	}
+    public double getMonthlyTax()
+    {
+	return monthlyTax;
+    }
 
-	public void setMonthlyTax(double monthlyTax) {
-		this.monthlyTax = monthlyTax;
-	}
+    public double getServiceTax()
+    {
+	return serviceTax;
+    }
 
-	public double getServiceTax() {
-		return serviceTax;
-	}
-
-	public void setServiceTax(double serviceTax) {
-		this.serviceTax += serviceTax;
-	}
+    public void setServiceTax(double serviceTax)
+    {
+	this.serviceTax += serviceTax;
+    }
 }
