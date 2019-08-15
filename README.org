@@ -8,7 +8,7 @@
     The once atrocious "runPayroll" method used in the App class, has been extracted to a proper class and it's functionalities. The now [[./payroll/src/main/java/payroll/][Payroll package]].
 
     - Before (code smell)
-      [[./img/codeSmell.png]]
+      [[./img/codeSmells.png]]
       
       
 ** How to use
