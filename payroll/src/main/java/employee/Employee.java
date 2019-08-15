@@ -80,5 +80,10 @@ public class Employee implements EmployeeUtils
     {
 	return infoAgenda;
     }
+
+    public Syndie getInfoSyndie()
+    {
+	return infoSyndie;
+    }
 }
 

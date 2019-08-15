@@ -7,7 +7,7 @@ import employee.types.Salaried;
 import agenda.*;
 import java.util.Calendar;
 import java.util.Scanner;
-import memento.*;
+import payroll.*;
 import inputHandler.*;
 
 public class App
@@ -15,12 +15,11 @@ public class App
     private static final ArrayList<Employee> employeeList = new ArrayList<Employee>();
     private static final ArrayList<Agenda> agendaList = new ArrayList<Agenda>();
     public static Calendar c = Calendar.getInstance();
+    public static Payroll schedule = new Payroll();
     public static int lastPayroll = c.get(Calendar.DAY_OF_YEAR) - 1;
     public static int id = 0;
     public static int plan= 2;
     public static Scanner input = new Scanner(System.in);
-    public static final Memento status = new Memento();
-    
 
 
     // fun1
@@ -202,65 +201,6 @@ public class App
 	employeeList.get(idAux).setInfoAgenda(agendaList.get(newAgendaIndex));
     }
 
-    public static void runPayroll()
-    {
-	Agenda currentAgenda;
-	int greatday;
-	String comparison;
-	
-	for(Employee emp: employeeList)
-	    {
-		currentAgenda = emp.getInfoAgenda();
-		comparison = currentAgenda.getCicle();
-
-		if(comparison.equals("Monthly"))
-		{
-		    if(currentAgenda.getDay() == c.get(Calendar.DAY_OF_MONTH))
-			{
-			    System.out.printf("%n PAID %lf %n",((Salaried)emp).getIncome());
-			}
-		}
-		else if(comparison.equals("Weekly"))
-		    {
-			if(currentAgenda.getDay() == c.get(Calendar.DAY_OF_WEEK))
-			    {
-				if(((Hourly)emp).getWeeklyHours() > 8.0)
-				    {
-					System.out.printf("%n PAID %lf %n",(((Hourly)emp).getWeeklyHours() * ((Hourly)emp).getPerhour()) * 1.5);					
-				    }
-				else
-				    {
-					System.out.printf("%n PAID %lf %n",(((Hourly)emp).getWeeklyHours() * ((Hourly)emp).getPerhour()) * 1.0);					
-				    }
-
-			    }
-		    }
-		else
-		    {
-			if(currentAgenda.getDay() == c.get(Calendar.DAY_OF_WEEK))
-			    {
-				greatday = c.get(Calendar.DAY_OF_MONTH);
-				if(greatday >= 1 && greatday <= 7 && currentAgenda.getFirstWeek() == 1){
-				    System.out.printf("%n PAID %lf %n",((((Commisioned)emp).getIncome()/2))+(((Commisioned)emp).getSalesRevenue()*(((Commisioned)emp).getSalesPercentage() /10)));					
-				}
-				else if(greatday >= 8 && greatday <= 14 && currentAgenda.getFirstWeek() == 2 || currentAgenda.getSecondWeek() == 2){
-				    System.out.printf("%n PAID %lf %n",((((Commisioned)emp).getIncome()/2))+(((Commisioned)emp).getSalesRevenue()*(((Commisioned)emp).getSalesPercentage() /10)));					
-				}
-				else if(greatday >= 15 && greatday <= 21 && currentAgenda.getFirstWeek() == 3 || currentAgenda.getSecondWeek() == 3){
-				    System.out.printf("%n PAID %lf %n",((((Commisioned)emp).getIncome()/2))+(((Commisioned)emp).getSalesRevenue()*(((Commisioned)emp).getSalesPercentage() /10)));					
-				}
-				else if(greatday >= 22 && greatday <= 31 && currentAgenda.getSecondWeek() == 4){
-				    System.out.printf("%n PAID %lf %n",((((Commisioned)emp).getIncome()/2))+(((Commisioned)emp).getSalesRevenue()*(((Commisioned)emp).getSalesPercentage() /10)));					
-				}
-			    }
-			else
-			    {
-				return;
-			    }
-		    }
-	    }
-    }
-
     public static void main(String[] args)
     {
 	agendaList.add(new Agenda(1, "Monthly", 0, 0));
@@ -299,7 +239,7 @@ public class App
 		idAux = inputHandler.catchEmployee("Input Employee ID: ", size);
 		assignAgenda(idAux);
 	    } else if (operation == 9) {
-		runPayroll();
+		schedule.runnerPayroll(employeeList);
 	    } else {
 		System.out.printf("Value out of Range%n");
 	    }
