@@ -2,7 +2,7 @@
 ** Included Patterns
 *** Extract Method
     Implemented in *Employee* Class, removing all code *redundancy*. It no longer has repeated code fragments.
-    <hr>
+    
 *** Replace Data Value With Object
     Implemented in Employee, the right usage of 3 classes; *Syndie*, *Agenda* and *Payment* and it's attributes. It no longer requires a String (data value) to represent them.
 
@@ -11,7 +11,7 @@
       
 - After
   [[./img/nice2.png]]
-  <hr>
+  
 *** Extract Class
     The once atrocious "runPayroll" method used in the App class, has been extracted to a proper class and it's functionalities. The now [[./payroll/src/main/java/payroll/][Payroll package]].
 
@@ -20,7 +20,7 @@
       
 - After
   [[./img/nice.png]]
-    <hr>
+    
 ** How to use
    main function is located at ./payroll/src/main/java/app/App.java. Once the program is running just read and follow the instructions.
 
