@@ -2,7 +2,7 @@ package employee;
 import agenda.*;
 import inputHandler.inputHandler;
 
-public class Employee implements EmployeeUtils
+public abstract class Employee
 {
     private int employeeID;
     private String employeeName;

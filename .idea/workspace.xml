@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cf0e2252-278d-490e-9206-b92fbf6b3dcb" name="Default Changelist" comment="Abstract class" />
+    <list default="true" id="cf0e2252-278d-490e-9206-b92fbf6b3dcb" name="Default Changelist" comment="Abstract class">
+      <change afterPath="$PROJECT_DIR$/img/pattern1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/employee/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/employee/Employee.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/employee/EmployeeUtils.java" beforeDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,6 +112,7 @@
       <workItem from="1581279812595" duration="329000" />
       <workItem from="1581286353183" duration="36000" />
       <workItem from="1581287144266" duration="262000" />
+      <workItem from="1581290020270" duration="560000" />
     </task>
     <task id="LOCAL-00001" summary="pom">
       <created>1574697051198</created>
